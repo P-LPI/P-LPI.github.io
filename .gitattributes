@@ -1,0 +1,2 @@
+#*.nb    filter=dropoutput_nb
+*.bin binary

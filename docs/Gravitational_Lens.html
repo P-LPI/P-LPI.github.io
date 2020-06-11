@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Job Feldbrugge and Neil Turok" />
+  <title>Gravitational lensing</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Gravitational lensing</h1>
+<p class="author">Job Feldbrugge and Neil Turok</p>
+</header>
+<!--- <a href="">Feldbrugge, and Turok (2020)</a> --->
+<p>Gravitational lensing in the thin-lens approximation, where the region over which the radiation is significantly deflected is small compared to the distance the radiation travels from the source to the lens and from the lens to the observer, can be expressed in terms of the two-dimensional Kirchhoff-Fresnel integral</p>
+<p><span class="math display">\[\psi(\boldsymbol{\mu}) = \frac{\nu}{2\pi i} \int e^{i \nu \left[(\boldsymbol{x}-\boldsymbol{\mu})^2/2 + \varphi(\boldsymbol{x})\right]} \mathrm{d}\boldsymbol{x}\]</span></p>
+<p>with the position on the sky <span class="math inline">\(\boldsymbol{\mu}\)</span>, the position on the lens plane <span class="math inline">\(\boldsymbol{x}\)</span>, and the frequency of the radiation <span class="math inline">\(\nu\)</span> in units of the Einstein radius. For the gravitational lensing by <span class="math inline">\(N\)</span> point-sources positioned at <span class="math inline">\(\boldsymbol{x}_i\)</span> the phase variation <span class="math inline">\(\varphi\)</span> of the form</p>
+<p><span class="math display">\[\varphi(\boldsymbol{x}) =- \sum_{i=1}^N f_i \log(\|\boldsymbol{x} - \boldsymbol{x}_i\|),\]</span></p>
+<p>with <span class="math inline">\(f_i\)</span> the relative strength of the lenses (determined by the masses of the sources), with <span class="math inline">\(f_1+\dots + f_N=1\)</span>. The intensity is defined as the magnitude squared of the amplitude</p>
+<p><span class="math display">\[I(\boldsymbol{\mu}) = | \psi(\boldsymbol{\mu})|^2.\]</span></p>
+<p>When the frequency is small compared to the Einstein radius, or when the radiation is incoherent, the geometric optics limit is a good approximation to this integral. However, when these conditions are not fulfilled we need to evaluate the highly oscillatory Kirchhoff-Fresnel integral to model the interference pattern. We will here describe the evaluation of the integral with Picard-Lefschetz theory.</p>
+<h3 id="single-gravitational-lens">Single gravitational lens</h3>
+<p>Lensing by a single point source, <em>i.e.</em>, <span class="math inline">\(\varphi(\boldsymbol{x}) = -\log(\|x\|)\)</span>, is one of the few lensing integrals with a closed form solution</p>
+<p><span class="math display">\[I(\boldsymbol{\mu}) = \frac{\pi \nu}{1-e^{-\pi \nu}} |_1F_1(i \nu / 2, 1; i \nu \mu^2/2)|^2,\]</span></p>
+<p>with <span class="math inline">\(\mu = \|\boldsymbol{\mu}\|\)</span>. See Fig. 1 for the interference patterns of the single gravitational lens.</p>
+<figure>
+<table align="left" width="100%" id="FIG">
+<tr>
+<td>
+<img src='figures_GL/Intensity_gamma=0.0_nu=25.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_gamma=0.0_nu=50.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_gamma=0.0_nu=75.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_gamma=0.0_nu=100.png' width=100% />
+</td>
+</tr>
+</table>
+<figcaption>
+Fig. 1- The lensing of a single gravitational lens for the frequencies <span class="math inline">\(\nu=25,50,75\)</span> and <span class="math inline">\(100\)</span> (respectively from left to right).
+</figcaption>
+</figure>
+<p>This is a beautiful result, but is unfortunately degenerate as a small perturbation of the phase variation will induce a dramatic change in the structure of the caustics and the interference pattern. More realistic is the occurrence of the single gravitational lens with a shear field,</p>
+<p><span class="math display">\[\varphi(\boldsymbol{x}) = - \log(\|\boldsymbol{x}\|) + \frac{1}{2}\gamma (x^2 - y^2),\]</span></p>
+<p>with <span class="math inline">\(\boldsymbol{x}=(x,y)\)</span> and the strength of the shear <span class="math inline">\(0\leq \gamma \leq 1\)</span>. The additional term could, for example, represent the tidal force form an external mass located a distance <span class="math inline">\(\gamma^{-1/2}\)</span> from the lens. In geometric optics, the single lens with a shear field induces the Lagrangian map,</p>
+<p><span class="math display">\[\xi(\boldsymbol{x}) = \left(1-\frac{1}{\|\boldsymbol{x}\|}\right) \boldsymbol{x} +\gamma (-x,y),\]</span></p>
+<p>sending points from the lens-plane to the screen. This map forms a caustic at the critical curve defined by the condition <span class="math inline">\(\det(\nabla \xi) = 0\)</span>,</p>
+<p><span class="math display">\[\mathcal{M} =\left \{ r (\cos \theta, \sin \theta) \,\bigg| \,r = \frac{1}{\sqrt{1- \gamma^2}} \sqrt{ \sqrt{1-\gamma^2 \sin^2 2 \theta} -\gamma \cos 2 \theta} \text{ and } \theta \in [0,2\pi)\right\}.\]</span></p>
+See Fig. 2 for the critical curve for the shear <span class="math inline">\(\gamma=0.1, 0.2, 0.3\)</span> and <span class="math inline">\(0.4\)</span>.
+<figure>
+<table align="left" width="100%" id="FIG">
+<tr>
+<td>
+<img src='figures_GL/Lens_gamma=0.1.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Lens_gamma=0.2.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Lens_gamma=0.3.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Lens_gamma=0.4.png' width=100% />
+</td>
+</tr>
+</table>
+<figcaption>
+Fig. 2 - The critical curve for <span class="math inline">\(\gamma = 0.1,0.2,0.3,\)</span> and <span class="math inline">\(0.4\)</span> (respectively from left to right).
+</figcaption>
+</figure>
+<p>The Lagrangian map maps the critical curve to the caustic curve <span class="math inline">\(\xi(\mathcal{M})\)</span> consisting of four fold curves running between four cusp points forming a curved diamond. This diamond is the curve at which the intensity in the geometric optics approximation diverges. The Kirchhoff-Fresnel integral has generically four saddle points, with two or four being real depending on whether <span class="math inline">\(\boldsymbol{\mu}\)</span> is outside or inside the caustic curve. The outside and inside of the caustic curve are respectively double- and quadruple-image regions.</p>
+<p>To evaluate the lens in wave optics, we use polar coordinates centered at the lens <span class="math inline">\(\boldsymbol{x} = r(\cos \theta , \sin \theta )\)</span>. In these coordinates, the integrand is an analytic function of the radial and angular coordinates,</p>
+<p><span class="math display">\[\psi(\boldsymbol{\mu}) =\frac{\nu}{2\pi i} \int_{0}^\infty \int_0^{2\pi} e^{i \nu \left[ ((r\cos \theta - \mu_x)^2 + (r\sin \theta - \mu_y)^2) / 2 - \log r + \frac{\gamma }{2} r^2(\cos^2\theta - \sin^2\theta) \right]} r \mathrm{d} \theta \mathrm{d} r,\]</span></p>
+<p>with <span class="math inline">\(\boldsymbol{\mu} = (\mu_x,\mu_y)\)</span>. As the angular integral is over a compact domain, we will use Picard-Lefschetz theory of the radial integral</p>
+<p><span class="math display">\[g_{\theta}(\boldsymbol{\mu}) = \int_{\mathcal{J}_\theta} e^{i \nu \left[ ((r\cos \theta - \mu_x)^2 + (r\sin \theta - \mu_y)^2) / 2 - \log r + \frac{\gamma }{2} r^2(\cos^2\theta - \sin^2\theta) \right] + \log r} \mathrm{d} r,\]</span></p>
+<p>with the Lefschetz-thimble <span class="math inline">\(\mathcal{J}_\theta\)</span> the complex continuous deformation of the original integration domain <span class="math inline">\((0,\infty)\)</span>. This deformation is obtained using Picard-Lefschetz theory, removing the oscillations from the radial integral (see Fig. 3 for an example).</p>
+<figure>
+<img src='figures_GL/PicardLefschetzDiagram.png' width = 40% />
+<figcaption>
+Fig. 3 - The Picard-Lefschetz diagram for the radial variable for shear <span class="math inline">\(\gamma=0.2\)</span> and the angular variable <span class="math inline">\(\theta = 0\)</span>. The black and blue curves are the steepest descent and ascent curves corresponding to the saddle points (the red points) of the <span class="math inline">\(h\)</span>-function (the background image). The original integration domain <span class="math inline">\((0,\infty)\)</span> is deformed to the Lefschetz thimbles (the blue curve) removing the oscillations of the integrand. The white vertical line is the branch cut of the logarithm, which we have placed to avoid the Lefschetz thimble.
+</figcaption>
+</figure>
+<p>The remaining integral over the angular parameter</p>
+<p><span class="math display">\[\psi(\boldsymbol{\mu}) =\frac{\nu}{2\pi i} \int_0^{2\pi} g_\theta (\boldsymbol{\mu})\mathrm{d}\theta,\]</span></p>
+<p>can be evaluated with traditional numerical methods. See Fig. 4 for the interference patterns of the single gravitational lens with a shear of <span class="math inline">\(\gamma=0.1,0.2,0.3, 0.4\)</span> and <span class="math inline">\(0.5\)</span> for the frequencies <span class="math inline">\(\nu=25,50,75,\)</span> and <span class="math inline">\(100\)</span>.</p>
+<figure>
+<table align="left" width="100%" id="FIG">
+<tr>
+<td>
+<img src='figures_GL/Intensity_gamma=0.1_nu=25.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_gamma=0.1_nu=50.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_gamma=0.1_nu=75.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_gamma=0.1_nu=100.png' width=100% />
+</td>
+</tr>
+<tr>
+<td>
+<img src='figures_GL/Intensity_gamma=0.2_nu=25.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_gamma=0.2_nu=50.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_gamma=0.2_nu=75.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_gamma=0.2_nu=100.png' width=100% />
+</td>
+</tr>
+<tr>
+<td>
+<img src='figures_GL/Intensity_gamma=0.3_nu=25.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_gamma=0.3_nu=50.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_gamma=0.3_nu=75.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_gamma=0.3_nu=100.png' width=100% />
+</td>
+</tr>
+<tr>
+<td>
+<img src='figures_GL/Intensity_gamma=0.4_nu=25.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_gamma=0.4_nu=50.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_gamma=0.4_nu=75.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_gamma=0.4_nu=100.png' width=100% />
+</td>
+</tr>
+<tr>
+<td>
+<img src='figures_GL/Intensity_gamma=0.5_nu=25.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_gamma=0.5_nu=50.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_gamma=0.5_nu=75.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_gamma=0.5_nu=100.png' width=100% />
+</td>
+</tr>
+</table>
+<figcaption>
+Fig. 4 - The lensing of a single gravitational lens with shear <span class="math inline">\(\gamma =0.1, 0.2, 0.3, 0.4\)</span> and <span class="math inline">\(0.5\)</span> (respectively the upper to the lower rows) and for the frequencies <span class="math inline">\(\nu=25,50,75\)</span> and <span class="math inline">\(100\)</span> (respectively the left to the right collumns). The white diamond is the caustic of the geometric optics approximation. The rings at the outskirts for high frequency and shear are aliasing artifacts.
+</figcaption>
+</figure>
+<h3 id="binary-gravitational-lens">Binary gravitational lens</h3>
+<p>The binary gravitational lens is described by the phase variation</p>
+<p><span class="math display">\[\varphi(\boldsymbol{x}) = -f_1 \log(\|\boldsymbol{x} - \boldsymbol{x}_1\|) - f_2 \log(\|\boldsymbol{x} - \boldsymbol{x}_2\|).\]</span></p>
+<p>For simplicity, we will let <span class="math inline">\(\boldsymbol{x}_1 = (-a,0)\)</span> and <span class="math inline">\(\boldsymbol{x}_1 = (a,0)\)</span> for some <span class="math inline">\(a&gt;0\)</span>. Using elliptic coordinates, <span class="math inline">\(\boldsymbol{x}(\tau,\sigma) = a(\cosh \tau \cos \sigma, \sinh \tau \sin \sigma)\)</span>, with <span class="math inline">\(0 &lt; \tau &lt; \infty\)</span> and <span class="math inline">\(0 &lt; \sigma \leq 2\pi\)</span>. Geometrically, the elliptic coordinates has two foci at the locations of the binary <span class="math inline">\(\boldsymbol{x}_1\)</span> and <span class="math inline">\(\boldsymbol{x}_2\)</span>. The constant <span class="math inline">\(\tau\)</span> contours form ovals around the foci (the red curves in Fig. 5). The constant <span class="math inline">\(\sigma\)</span> contours pass between the to foci (the blue curves in Fig. 5).</p>
+<figure>
+<img src='figures_GL/ellipticCoordinates.png' width = 50% />
+<figcaption>
+Fig. 5 - Elliptic coordinates for <span class="math inline">\(a=1\)</span>. The red curves are the constant <span class="math inline">\(\tau\)</span> contours. The blue cirves are constant <span class="math inline">\(\sigma\)</span> contours. The black line segments connect the upper green point to the foci, at <span class="math inline">\(\boldsymbol{x}=(\pm 1, 0)\)</span>, of the elliptic coordinate system.
+</figcaption>
+</figure>
+<p>Note that the variables <span class="math inline">\(\tau\)</span> and <span class="math inline">\(\sigma\)</span> resemble the radial and angular polar variables <span class="math inline">\(r\)</span> and <span class="math inline">\(\theta\)</span>. In elliptic coordinates, we obtain the identities</p>
+<p><span class="math display">\[ \begin{aligned}
+\|\boldsymbol{x} - \boldsymbol{x}_1\| &amp;= a(\cosh \tau + \cos \tau),\\
+\|\boldsymbol{x} - \boldsymbol{x}_2\| &amp;= a(\cosh \tau - \cos \tau).
+\end{aligned}\]</span></p>
+<p>In the measure in Cartesian and elliptic coordinates are related by the Jacobian</p>
+<p><span class="math display">\[J(\tau,\sigma) = \frac{a^2}{2} \left( \cosh 2\tau - \cos 2 \sigma\right).\]</span></p>
+<p>Following the calculation for the single gravitational lens, we perform the radial <span class="math inline">\(\tau\)</span>-integral using Picard-Lefschetz theory</p>
+<p><span class="math display">\[g_\sigma(\boldsymbol{\mu}) = \int_{\mathcal{J}_\sigma} e^{i \nu \left[ \frac{1}{2}(\boldsymbol{x}(\tau,\sigma) - \boldsymbol{\mu})^2 - f_1 \log(a(\cosh \tau + \cos \tau))- f_2 \log(a(\cosh \tau - \cos \tau))\right] + \log(J(\tau,\sigma))}\mathrm{d}\tau.\]</span></p>
+<p>For this integral, it turns out to be most efficient to extend the original integration domain for <span class="math inline">\(\tau\)</span> to the real line <span class="math inline">\(\mathbb{R}\)</span>. See Fig. 6 for two examples of the thimble <span class="math inline">\(\mathcal{J}_\sigma\)</span>.</p>
+<figure>
+<table align="left" width="100%" id="FIG">
+<tr>
+<td>
+<img src='figures_GL/DoubleLensPL_sigma=pi_3_mux=1.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/DoubleLensPL_sigma=pi_3.png' width=100% />
+</td>
+</tr>
+</table>
+<figcaption>
+Fig. 6 - The Picard-Lefschetz diagram in the complex <span class="math inline">\(\tau\)</span>-plane for <span class="math inline">\(\nu=1,a=1\)</span> for <span class="math inline">\(\boldsymbol{\mu}=\boldsymbol{0}\)</span> and <span class="math inline">\((1,0)\)</span>. The red points are the saddle points, the green points are the branch points and the blue curves are the relevant steepest descent contours.
+</figcaption>
+</figure>
+<p>The amplitude is now expressed as an angular integral over a compact domain which we evaluate using conventional integration techniques</p>
+<p><span class="math display">\[\psi(\boldsymbol{\mu}) = \frac{\nu}{4\pi i} \int_0^{2\pi} g_{\sigma}(\boldsymbol{\mu}) \mathrm{d}\sigma.\]</span></p>
+<p>For an illustration of the intensity map for lens strenghts <span class="math inline">\(f_1=1/3, f_2=2/3\)</span>, with a seperation <span class="math inline">\(a=0.1,0.2,\dots,1.0\)</span>, and the frequencies <span class="math inline">\(\nu=25,50,75,\)</span> and <span class="math inline">\(100\)</span> see Fig. 7.</p>
+<figure>
+<table align="left" width="100%" id="FIG">
+<tr>
+<td>
+<img src='figures_GL/Intensity_a=0.1_nu=25.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.1_nu=50.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.1_nu=75.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.1_nu=100.png' width=100% />
+</td>
+</tr>
+<tr>
+<td>
+<img src='figures_GL/Intensity_a=0.2_nu=25.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.2_nu=50.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.2_nu=75.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.2_nu=100.png' width=100% />
+</td>
+</tr>
+<tr>
+<td>
+<img src='figures_GL/Intensity_a=0.3_nu=25.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.3_nu=50.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.3_nu=75.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.3_nu=100.png' width=100% />
+</td>
+</tr>
+<tr>
+<td>
+<img src='figures_GL/Intensity_a=0.4_nu=25.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.4_nu=50.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.4_nu=75.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.4_nu=100.png' width=100% />
+</td>
+</tr>
+<tr>
+<td>
+<img src='figures_GL/Intensity_a=0.5_nu=25.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.5_nu=50.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.5_nu=75.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.5_nu=100.png' width=100% />
+</td>
+</tr>
+<tr>
+<td>
+<img src='figures_GL/Intensity_a=0.6_nu=25.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.6_nu=50.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.6_nu=75.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.6_nu=100.png' width=100% />
+</td>
+</tr>
+<tr>
+<td>
+<img src='figures_GL/Intensity_a=0.7_nu=25.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.7_nu=50.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.7_nu=75.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.7_nu=100.png' width=100% />
+</td>
+</tr>
+<tr>
+<td>
+<img src='figures_GL/Intensity_a=0.8_nu=25.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.8_nu=50.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.8_nu=75.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.8_nu=100.png' width=100% />
+</td>
+</tr>
+<tr>
+<td>
+<img src='figures_GL/Intensity_a=0.9_nu=25.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.9_nu=50.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.9_nu=75.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=0.9_nu=100.png' width=100% />
+</td>
+</tr>
+<tr>
+<td>
+<img src='figures_GL/Intensity_a=1.0_nu=25.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=1.0_nu=50.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=1.0_nu=75.png' width=100% />
+</td>
+<td>
+<img src='figures_GL/Intensity_a=1.0_nu=100.png' width=100% />
+</td>
+</tr>
+</table>
+<figcaption>
+Fig. 7 - The intensity of the binary system with lens strength <span class="math inline">\(f_1=1/3, f_2=2/3\)</span>, separation <span class="math inline">\(a=0.1,0.2\dots,1.0\)</span> (respectively from the upper to the lower rows), and the frequencies <span class="math inline">\(\nu=25,50,75,\)</span> and <span class="math inline">\(100\)</span> (respectively from left to right). The white curve is the caustic of the geometric optics approximation.
+</figcaption>
+</figure>
+</body>
+</html>

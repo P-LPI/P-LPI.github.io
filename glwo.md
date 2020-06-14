@@ -8,7 +8,7 @@ We study gravitational lensing in the thin-lens approximation, which is valid wh
 
 $$\psi(\boldsymbol{y}) = \frac{\Omega}{2\pi i} \int e^{i \Omega \left[{1\over 2}(\boldsymbol{x}-\boldsymbol{y})^2 + \varphi(\boldsymbol{x})\right]} \mathrm{d}\boldsymbol{x}.$$
 
-Here, $\boldsymbol{y}$ and $\boldsymbol{x}$ denote the position on the sky and on the lens plane respectively. Both are expressed in units of the Einstein angle for the total lens mass. For gravitational lensing by $N$ point masseslocated at $\boldsymbol{x}_i$,  $i=1,\dots N$ on the sky, the lensing phase takes the form
+Here, $\boldsymbol{y}$ and $\boldsymbol{x}$ denote the position on the sky and on the lens plane respectively. Both are expressed in units of the Einstein angle for the total lens mass. For gravitational lensing by $N$ point masses located at $\boldsymbol{x}_i$, $i=1,\dots N$ on the sky, the lensing phase takes the form
 
 $$\varphi(\boldsymbol{x}) =- \sum_{i=1}^N f_i \log|\boldsymbol{x} - \boldsymbol{x}_i |\,,$$
 
@@ -16,10 +16,10 @@ with $f_i$ the mass fractions satisfying $\sum_{i=1}^N f_i=1$. The normalized in
 
 $$I(\boldsymbol{y}) = | \psi(\boldsymbol{y})|^2.$$
 
-When the wavelength is small compared to the Schwarzchild radius for the lens mass, or when the radiation is incoherent, geometric (ray) optics provides an excellent approximation. However, when these conditions are not fulfilled,  the interference pattern must be determined by evaluating the highly oscillatory Kirchhoff-Fresnel integral. We use Picard-Lefschetz theory to do so.
+When the wavelength is small compared to the Schwarzchild radius for the lens mass, or when the radiation is incoherent, geometric (ray) optics provides an excellent approximation. However, when these conditions are not fulfilled, the interference pattern must be determined by evaluating the highly oscillatory Kirchhoff-Fresnel integral. We use Picard-Lefschetz theory to do so.
 
 ### Single gravitational lens
-Generally, the Kirchhoff-Fresnel integral must be performed numerically. In the case of lensing by a single point source, *i.e.*, $\varphi(\boldsymbol{x}) = -\log x$ (where $x\equiv |\boldsymbol{x}|$)  the integral may be given in closed form
+Generally, the Kirchhoff-Fresnel integral must be performed numerically. In the case of lensing by a single point source, *i.e.*, $\varphi(\boldsymbol{x}) = -\log x$ (where $x\equiv |\boldsymbol{x}|$) the integral may be given in closed form
 
 $$I(\boldsymbol{y}) = \frac{\pi \Omega}{1-e^{-\pi \Omega}} |{}_1F_1(i \Omega / 2, 1; i \Omega y^2/2)|^2,$$
 
@@ -68,9 +68,9 @@ To evaluate the lens in wave optics, we use polar coordinates centred at the len
 
 $$\psi(\boldsymbol{y}) =\frac{\Omega}{2\pi i} \int_{0}^\infty \int_0^{2\pi} e^{i \Omega \left[ ((r\cos \theta - \mu_x)^2 + (r\sin \theta - \mu_y)^2) / 2 - \log r + \frac{\gamma }{2} r^2(\cos^2\theta - \sin^2\theta) \right]} r \mathrm{d} \theta \mathrm{d} r,$$
 
-with $\boldsymbol{y} = (y_1,y_2)$. The radial integral is subtle, since the integrand oscillates an infinite number of times. We use Picard-Lefschetz theory to perform it, at each value of $\theta$, defining
+with $\boldsymbol{y} = (y_1,y_2)$. The radial integral is subtle since the integrand oscillates an infinite number of times. We use Picard-Lefschetz theory to perform it, at each value of $\theta$, defining
 
-$$g_{\theta}(\boldsymbol{y}) = \int_{\mathcal{J}_\theta} e^{i \Omega \left[ {1\over 2}((r\cos \theta - x_1)^2 + (r\sin \theta - x_2)^2)  - \log r + {1\over 2} \gamma r^2 \cos 2\theta  \right] + \log r} \mathrm{d} r,$$
+$$g_{\theta}(\boldsymbol{y}) = \int_{\mathcal{J}_\theta} e^{i \Omega \left[ {1\over 2}((r\cos \theta - x_1)^2 + (r\sin \theta - x_2)^2) - \log r + {1\over 2} \gamma r^2 \cos 2\theta \right] + \log r} \mathrm{d} r,$$
 
 with the Lefschetz thimble $\mathcal{J}_\theta$ obtained by a continuous deformation of the original integration domain $(0,\infty)$ into the complex $r$-plane (see Fig. 3 for an example). This deformation removes the oscillations from the radial integral.
 
@@ -133,7 +133,7 @@ $$\xi(\boldsymbol{x}) = \left(x_1 - \frac{f_1(x_1+a)}{| \boldsymbol{x} + \boldsy
 
 can be used to construct the critical curve, $\mathcal{M} = \{\boldsymbol{x}| \det \nabla \xi(\boldsymbol{x}) = 0\}$ and the caustic curve, $\xi(\mathcal{M})$. It is straightforward to show that outside the caustic curve, three images contribute to the intensity. Two of these are mainly lensed by one of the two lenses and the third is lensed by the combined system. Inside the caustic curve is a five-image region.  
 
-As with the single gravitational lens, it is awkward to apply Picard-Lefschetz methods in Cartesian coordinates since the integrand has branch cuts on the real axis. Instead we use elliptic coordinates, $\boldsymbol{x}(\tau,\sigma) = a(\cosh \tau \cos \sigma, \sinh \tau \sin \sigma)$, with $0 < \tau < \infty$ and $0 < \sigma \leq 2\pi$. Geometrically, these coordinates has two foci at the locations of the two lens masses $\mp\boldsymbol{r}$. The constant $\tau$ contours form ovals around the foci (the red curves in Fig. 5). The constant $\sigma$ contours pass between the two foci (the blue curves in Fig. 5). Note that the variables $\tau$ and $\sigma$ are analogous to $r$ and $\theta$ in  2d polar coordinates. 
+As with the single gravitational lens, it is awkward to apply Picard-Lefschetz methods in Cartesian coordinates since the integrand has branch cuts on the real axis. Instead we use elliptic coordinates, $\boldsymbol{x}(\tau,\sigma) = a(\cosh \tau \cos \sigma, \sinh \tau \sin \sigma)$, with $0 < \tau < \infty$ and $0 < \sigma \leq 2\pi$. Geometrically, these coordinates has two foci at the locations of the two lens masses $\mp\boldsymbol{r}$. The constant $\tau$ contours form ovals around the foci (the red curves in Fig. 5). The constant $\sigma$ contours pass between the two foci (the blue curves in Fig. 5). Note that the variables $\tau$ and $\sigma$ are analogous to $r$ and $\theta$ in 2d polar coordinates. 
 
 <figure>
 <img src='figures/figures_glwo/ellipticCoordinates.png' width = 50% />
@@ -237,5 +237,5 @@ Figure 7 shows intensity maps for lens strengths $f_1=1/3, f_2=2/3$, with separa
 <td><img src='figures/figures_glwo/Intensity_a=1.0_nu=100.png' width=100% /></td>
 </tr>
  </table>
- <figcaption> Fig. 7 - The intensity for a binary lens with $f_1=1/3, f_2=2/3$, separation $a=0.1,0.2\dots,1.0$ (respectively from the upper to the lower row), and  $\Omega=25,50,75,$ and $100$ (from left to right). The white curve is the caustic of the geometric optics approximation. </figcaption>
+ <figcaption> Fig. 7 - The intensity for a binary lens with $f_1=1/3, f_2=2/3$, separation $a=0.1,0.2\dots,1.0$ (respectively from the upper to the lower row), and $\Omega=25,50,75,$ and $100$ (from left to right). The white curve is the caustic of the geometric optics approximation. </figcaption>
 </figure>

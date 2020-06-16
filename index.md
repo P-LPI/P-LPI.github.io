@@ -217,6 +217,21 @@ We can efficiently evaluate the Kirchhoff-Fresnel integral along the Lefschetz t
  <figcaption> Fig.4 - The intensity pattern of the one-dimensional localized lens with the lens strenght $\alpha =2$ for the frequencies from left to right $\nu=50,100$ and $500$.</figcaption>
 </figure>
 
+#### Two-dimensional plasma lens
+Consider the two-dimensional toy model consisting of an asymetric blob
+
+$$
+\varphi(\boldsymbol{x}) = \frac{0.65}{1+ x^2 + 2 y^2}.
+$$
+
+This is the lens integral solved in the example code.
+
+<figure>
+<img src="figures/figures_index/2D plasma lens.gif" width=75% />
+<figcaption> Fig. - A two-dimensional lens as a function of the frequency. </figcaption>
+</figure>
+
+
 #### Random lens
 Lensing by a random or turbulent medium can be modelled by a random phase variation $\varphi$. We will here assume the phase to be a realization of a Gaussian random field. See Fig. 5 for an illustration of an interference pattern corresponding to a random lens with the power-law power spectrum $P(\boldsymbol{k}) \propto k^{-1}$. For more details see <a href="">Feldbrugge, Pen, and Turok (2020)</a>.
 

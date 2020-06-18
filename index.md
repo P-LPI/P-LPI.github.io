@@ -233,7 +233,7 @@ This is the lens integral solved in the example code.
 
 
 #### Random lens
-Lensing by a random or turbulent medium can be modelled by a random phase variation $\varphi$. We will here assume the phase to be a realization of a Gaussian random field. See Fig. 5 for an illustration of an interference pattern corresponding to a random lens with the power-law power spectrum $P(\boldsymbol{k}) \propto k^{-1}$. For more details see <a href="">Feldbrugge, Pen, and Turok (2020)</a>.
+Lensing by a random or turbulent medium can be modelled by a random phase variation $\varphi$. We will here assume the phase to be a realization of a Gaussian random field. See Fig. 5 for an illustration of an interference pattern corresponding to a random lens with the power-law power spectrum $P(\boldsymbol{k}) \propto k^{-1}$. For more details see <a href="">Feldbrugge, Pen, and Turok (2020)</a>. For more details see <a href="klwo.html">Kolmogorov lenses</a>.
 
 <figure>
 <table align='left' width=100% id="FIG">

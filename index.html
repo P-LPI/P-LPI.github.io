@@ -101,7 +101,7 @@ $ g++ -fopenmp -std=c++11 -O3 -march=native -ffast-math -o PL2D code2D/main.cpp<
 <p>The published code evaluates the <span class="math inline">\(n\)</span>-dimensional Kirchhoff-Fresnel integral</p>
 <p><span class="math display">\[\psi(\boldsymbol{\mu}) = \left(\frac{\nu}{2\pi i}\right)^{n/2} \int e^{i \nu \left[(\boldsymbol{x}-\boldsymbol{\mu})^2/2 + \varphi(\boldsymbol{x})\right]} \mathrm{d}\boldsymbol{x}\]</span></p>
 <p>with <span class="math inline">\(n=1,2\)</span>, where the exponent is specified in the function</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a><span class="bu">std::</span>complex&lt;<span class="dt">double</span>&gt; func();</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="bu">std::</span>complex&lt;<span class="dt">double</span>&gt; func();</span></code></pre></div>
 <figure>
 <table align="left" width="100%" id="FIG">
 <tr>
@@ -167,28 +167,28 @@ Fig.2 - The partial Fresnel integral <span class="math inline">\(I_F(R)\)</span>
 <p>with <span class="math inline">\(l_i \in \mathbb{N}\)</span>, referring to a point <span class="math inline">\(\boldsymbol{x}_{l_i}\)</span> in the set</p>
 <p><span class="math display">\[S = \{\boldsymbol{x}_1,\boldsymbol{x}_2,\dots\} \subset \mathbb{C}^2,\]</span></p>
 <p>with the property that when <span class="math inline">\((i,j,k,l) \in J\)</span>, the sides of the quadrilateral are smaler than <span class="math inline">\(\delta\)</span>, <em>i.e.</em>, <span class="math inline">\(\text{max}(\| \boldsymbol{x}_i - \boldsymbol{x}_j\|, \| \boldsymbol{x}_j - \boldsymbol{x}_k\|, \| \boldsymbol{x}_k - \boldsymbol{x}_l\|, \| \boldsymbol{x}_i - \boldsymbol{x}_l\|) &lt; \delta\)</span>. The simplices in <span class="math inline">\(J\)</span> are implemented in the <strong>simplex</strong> class</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">class</span> simplex;</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="kw">class</span> simplex;</span></code></pre></div>
 <p>The class in addition to the labels to the points includes the boolean <strong>active</strong> which marks whether the simplex is still in use. The points in <span class="math inline">\(S\)</span> are implemented by the <strong>cp</strong> struct, associating a boolean <strong>active</strong> to the complex point</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">struct</span> cp {</span>
-<span id="cb6-2"><a href="#cb6-2"></a> pointC p;</span>
-<span id="cb6-3"><a href="#cb6-3"></a> <span class="dt">bool</span> active;</span>
-<span id="cb6-4"><a href="#cb6-4"></a>};</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="kw">struct</span> cp {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a> pointC p;</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a> <span class="dt">bool</span> active;</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>};</span></code></pre></div>
 <h4 id="the-downward-flow-of-a-simplex">The downward flow of a simplex</h4>
 <p>The downward flow of the integration domain <span class="math inline">\(J\)</span> is implemented with the Euler method, <em>i.e.</em>, for all points <span class="math inline">\(\boldsymbol{x}\)</span> in <span class="math inline">\(S\)</span>, shift their positions with the rule</p>
 <p><span class="math display">\[ \boldsymbol{x} \mapsto \boldsymbol{x} - \tau \frac{\nabla h(\boldsymbol{x})}{\|  \nabla h(\boldsymbol{x}) \|}\]</span></p>
 <p>with step size <span class="math inline">\(\tau&gt;0\)</span>, implemented in the function <strong>flow</strong></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1"></a><span class="dt">void</span> flow();</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="dt">void</span> flow();</span></code></pre></div>
 <p>We normalize the gradient to improve the behavior of the flow in the vicinity of singularities in the <span class="math inline">\(h\)</span>-function. A point in the set <span class="math inline">\(S\)</span> is turned inactive when the <span class="math inline">\(h\)</span>-function drops below the threshold <strong>thres</strong>. The threshold determines the accuracy of the approximation of the integral.</p>
 <h4 id="subdivision-of-simplices">Subdivision of simplices</h4>
 <p>After each iteration of the flow, we check whether the points of an active simplex are still active. If not, we turn the simplex inactive. For every active simplex, we check whether the separations of the edges is still smaller than <span class="math inline">\(\delta\)</span>. When an active simplex has an edge exceeding <span class="math inline">\(\delta\)</span>, we replace the simplex by two new simplices. That is to say, in the one-dimensional case, when <span class="math inline">\((i,j) \in J\)</span> refers to two points with a larger separation then <span class="math inline">\(\delta\)</span>, <em>i.e.</em>, <span class="math inline">\(|x_i - x_j|\)</span> we add a new point <span class="math inline">\(x_k = (x_i + x_j) / 2\)</span> to the set <span class="math inline">\(S\)</span> and replace the simplex by the new simplices <span class="math inline">\((i,k)\)</span> and <span class="math inline">\((k,j)\)</span>. The old simplex is turned inactive. The two-dimensional case follows analogously. This is implemented in the function <strong>subdivide</strong></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1"></a><span class="dt">void</span> subdivide();</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="dt">void</span> subdivide();</span></code></pre></div>
 <p>By iterating the <strong>flow</strong> and the <strong>subdivide</strong> routine, the simplices <span class="math inline">\(J\)</span> will approach the Lefschetz thimble <span class="math inline">\(\mathcal{J}\)</span>. There are several ways in which we check whether the simplices <span class="math inline">\(J\)</span> have converged to the Lefschetz thimble. In the presented implementation we iterate for a fixed number of steps. After we have found the thimble, we bake the points into the <strong>simplex</strong> class of <span class="math inline">\(J\)</span> and delete the set <span class="math inline">\(S\)</span>.</p>
 <p>Since the flow turns simplices inactive in the <strong>flow</strong> routine and replenishes them in the <strong>subdivide</strong> routine, we remove any inactive simplices from <span class="math inline">\(J\)</span> with the <strong>clean</strong> routine</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1"></a><span class="dt">void</span> clean();</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="dt">void</span> clean();</span></code></pre></div>
 <p>before evaluating the integral.</p>
 <h4 id="romberg-integration">Romberg integration</h4>
 <p>Given the simplicial approximation <span class="math inline">\(J\)</span> of the Lefschetz thimble <span class="math inline">\(\mathcal{J}\)</span>, we evaluate the integral piecewise with a <a href="https://en.wikipedia.org/wiki/Romberg%27s_method">Romberg integration scheme</a>. Given an active simplex in <span class="math inline">\(J\)</span>, we evaluate the trapezium rule on the simplex <span class="math inline">\(T(1)\)</span> and <span class="math inline">\(N\)</span> refinements of the simplex <span class="math inline">\(T(2),T(3), \dots, T(N)\)</span>. At each refinement we half the present simplices. Note that for the trapezium rule, the approximation <span class="math inline">\(T(i)\)</span> can be used in the efficiently evaluation of the refinement <span class="math inline">\(T(i+1)\)</span>. Given the set of approximations <span class="math inline">\(T(1),T(2),\dots,T(n)\)</span> of the integral over a simiplex in <span class="math inline">\(J\)</span>, we use <a href="https://en.wikipedia.org/wiki/Richardson_extrapolation">Richardson extrapolation</a> to improve the convergence to the true integral. The Romberg method is implemented in the function</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1"></a><span class="bu">std::</span>complex&lt;<span class="dt">double</span>&gt; romberg();</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="bu">std::</span>complex&lt;<span class="dt">double</span>&gt; romberg();</span></code></pre></div>
 <p>For a detailed discussion of one- and two-dimensional Romberg integration see <a href="https://www.tandfonline.com/doi/abs/10.1080/10637199408962543?needAccess=true&journalCode=gpaa19">Evans and Bahoshy (1993)</a>.</p>
 <h4 id="evaluating-a-family-of-integrals">Evaluating a family of integrals</h4>
 <p>In practice, one rarely wants to evaluate a single integral. When the set of integrals is a smooth family, such as for the Kirchhoff-Fresnel integral, we can construct a catalogue of thimbles <span class="math inline">\(J_i\)</span> for a range of external parameters <span class="math inline">\(\boldsymbol{\mu}_i\)</span>. When we want to evaluate the integral for a specific parameter <span class="math inline">\(\boldsymbol{\mu}\)</span>, we find the thimble corresponding to the closest point in the catalogue and evaluate the integral along this thimble. Note that while this thimble <span class="math inline">\(J_i\)</span> is not the optimal integration contour for the parameter <span class="math inline">\(\boldsymbol{\mu}\)</span>, Cauchy’s integral theorem guarantees that the integral does not depend on the details of the thimble. The integrand along this suboptimal thimble will generally quickly decay and be only mildly oscillate.</p>
@@ -316,5 +316,21 @@ Fig.6 - The lensing of a single gravitational lens with shear <span class="math 
 Fig.7 - The intensity pattern of a binary gravitational lens with <span class="math inline">\(f_1=1/3,f_2=2/3\)</span> seperated by an Einstein radius, <span class="math inline">\(\boldsymbol{r}=(0,1/2)\)</span> for the frequencies <span class="math inline">\(\nu=25, 50\)</span> and <span class="math inline">\(75\)</span> (from left to right). The white dotted line is the caustic from the geometric optics approximation.
 </figcaption>
 </figure>
+<!-- Default Statcounter code for P-lpi.github.io
+https://p-lpi.github.io/ -->
+<script type="text/javascript">
+var sc_project=12370908; 
+var sc_invisible=1; 
+var sc_security="6bf25b0b"; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js"
+async></script>
+<noscript><div class="statcounter"><a title="Web Analytics"
+href="https://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="https://c.statcounter.com/12370908/0/6bf25b0b/1/"
+alt="Web Analytics"></a></div></noscript>
+<!-- End of Statcounter Code -->
 </body>
 </html>

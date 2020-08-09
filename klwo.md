@@ -3,16 +3,16 @@
 
 <!--- <a href="">Feldbrugge, and Turok (2020)</a> ---> 
 
-We consider the lensing by a Gaussian random lens with a Kolmogorov and a inverse power-spectrum in the thin-lens approximation. This is a good model for twinkling by a turbulent medium.
+We consider lensing by a plasma whose electron density takes the form of a Gaussian random field with a Kolmogorov power spectrum: in the thin lens approximation, the lens is effectively two-dimensional and the power spectrum $P(k)\propto k^{-{5\over 3}}$. This is a good model for twinkling produced by a turbulent medium.
 
-Consider a realization of a Gaussian random field with a Kolmogorov power spectrum
+The following picture shows a realization of the lens:
 
 <figure>
 <img src='figures/figures_klwo/Kolmogorov_2.png' width=50% />
-<figcaption> Fig. 1- A realization of a random lens with a Kolmogorov power spectrum. </figcaption>
+<figcaption> Fig. 1- A 2d Gaussian random lens with a Kolmogorov power spectrum. </figcaption>
 </figure>
 
-The lens leads to the formation of a complicated non-Gaussian fringe pattern following an intricate caustic network.
+We calculate the intensity pattern produced by this lens, comprising an intricate caustic network with diffraction fringes:
 
 <figure>
 <table align='left' width=100% id="FIG">
@@ -47,17 +47,17 @@ The lens leads to the formation of a complicated non-Gaussian fringe pattern fol
 <td><img src='figures/figures_klwo/Kolmogorov_2_f=2_ν = 12800_All.png' width=100% /></td>
 </tr>
  </table>
- <figcaption> Fig. 2- The intensity pattern of the Kolmogorov lens.</figcaption>
+ <figcaption> Fig. 2- The intensity pattern produced by lensing of the 2d Kolmogorov lens, for various lens strengths.</figcaption>
 </figure>
 
-Consider a realization of a Gaussian random field with an inverse power spectrum
+We also consider a 2d Gaussian random field with a  power spectrum $P(k)\propto k^{-1}$:
 
 <figure>
 <img src='figures/figures_klwo/Inverse.png' width=50% />
-<figcaption> Fig. 3- A realization of a random lens with a inverse $P(k)=k^{-1}$ power spectrum. </figcaption>
+<figcaption> Fig. 3- A realization of a random lens with power spectrum $P(k)\propto k^{-1}$. </figcaption>
 </figure>
 
-The lens leads to the formation of a complicated non-Gaussian fringe pattern following an intricate caustic network.
+The intensity pattern for this case are shown below, again for various lens strengths.
 
 <figure>
 <table align='left' width=100% id="FIG">
@@ -92,5 +92,5 @@ The lens leads to the formation of a complicated non-Gaussian fringe pattern fol
 <td><img src='figures/figures_klwo/Inverse_f=2_ν = 12800_All.png' width=100% /></td>
 </tr>
 </table>
- <figcaption> Fig. 4- The intensity pattern of the inverse lens.</figcaption>
+ <figcaption> Fig. 4- The intensity pattern produced by a 2d plasma lens with power spectrum $P(k)\propto k^{-1}$, for various strengths of the lens.</figcaption>
 </figure>

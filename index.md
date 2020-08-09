@@ -154,7 +154,7 @@ with step size $\tau>0$, implemented in the function **flow**
 ```c++
 void flow();
 ```
-We normalize the gradient to improve the behavior of the flow in the vicinity of singularities in the $h$-function. A point in the set $S$ is turned inactive when the $h$-function drops below the threshold **thres**. The threshold determines the accuracy of the approximation of the integral.
+We normalize the gradient to improve the behaviour of the flow in the vicinity of singularities in the $h$-function. A point in the set $S$ is turned inactive when the $h$-function drops below the threshold **thres**. The threshold determines the accuracy of the approximation of the integral.
 
 #### Subdivision of simplices
 After each iteration of the flow, we check whether the points of an active simplex are still active. If not, we turn the simplex inactive. For every active simplex, we check whether the separations of the edges is still smaller than $\delta$. When an active simplex has an edge exceeding $\delta$, we replace the simplex by two new simplices. That is to say, in the one-dimensional case, when $(i,j) \in J$ refers to two points with a larger separation then $\delta$, *i.e.*, $|x_i - x_j|$ we add a new point $x_k = (x_i + x_j) / 2$ to the set $S$ and replace the simplex by the new simplices $(i,k)$ and $(k,j)$. The old simplex is turned inactive. The two-dimensional case follows analogously. This is implemented in the function **subdivide**
@@ -291,5 +291,5 @@ We will evaluate the interference pattern for a situation in which the two souce
 <td><img src='figures/figures_index/Binary_Wave_nu=75.png' width=100% /></td>
 </tr>
  </table>
- <figcaption> Fig.7 - The intensity pattern of a binary gravitational lens with $f_1=1/3,f_2=2/3$ seperated by an Einstein radius, $\boldsymbol{r}=(0,1/2)$ for the frequencies $\nu=25, 50$ and $75$ (from left to right). The white dotted line is the caustic from the geometric optics approximation.</figcaption>
+ <figcaption> Fig.7 - The intensity pattern of a binary gravitational lens with $f_1=1/3,f_2=2/3$ seperated by an Einstein radius, $\boldsymbol{r}=(0,1/2)$ for the frequencies $\nu=25, 50$ and $75$ (from left to right). The white dotted line is the caustic obtained in the geometric optics approximation.</figcaption>
 </figure>

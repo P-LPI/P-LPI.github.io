@@ -8,7 +8,7 @@ Cauchy’s theorem allows one to transform a computationally fragile and expensi
 The C++ implementations of both the one- and two-dimensional Picard-Lefschetz integrator can be downloaded from the git repository
 
 ```
-git clone https://github.com/jfeldbrugge/Picard_Lefschetz_Integrator.git
+git clone https://github.com/P-LPI/P-LPI.github.io.git
 ```
 
 The source code can be compiled with the command

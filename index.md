@@ -1,5 +1,13 @@
-% Picard-Lefschetz Path Integrals
-% Job Feldbrugge, Ue-Li Pen and Neil Turok
+---
+title: Picard-Lefschetz Path Integrals
+author: Job Feldbrugge, Ue-Li Pen and Neil Turok
+header-includes:
+    <link rel = "icon" href = "figures/icon.jpg" type = "image/x-icon"> 
+    <div class="topnav">
+      <a href="https://jfeldbrugge.github.io/">Home</a>
+      <a href="https://jfeldbrugge.github.io/Projects-and-Codes/">Projects and Code</a>
+    </div>
+---
 
 Interference is one of the most universal phenomena in nature. In classical physics, the linear superposition of sound waves, surface waves, radio waves, light or gravitational waves all exhibit the same characteristic patterns of constructive and destructive interference. Interference is also fundamental to quantum physics. The basic quantum amplitudes describing particles or fields are most elegantly formulated as path integrals – sums over trajectories weighted by the phase factor $e^{iS/\hbar}$ with $S$ the action and $\hbar$ Planck’s constant. As ubiquitous as interference and interference patterns are, they are generally hard to compute. The oscillatory integrals involved are only conditionally and not absolutely convergent, meaning they converge slowly and artefacts such as dependence on unphysical cutoffs may be hard to avoid. Likewise, if the integrals are performed iteratively, as is often the only practicable method, conditional convergence is in general insufficient to guarantee uniqueness, since the order in which partial integrals are taken can affect the result.  
 

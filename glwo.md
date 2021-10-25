@@ -1,5 +1,13 @@
-% Gravitational lensing <br/> in wave optics
-% Job Feldbrugge and Neil Turok
+---
+title: Gravitational lensing in wave optics
+author: Job Feldbrugge and Neil Turok
+header-includes:
+    <link rel = "icon" href = "figures/icon.jpg" type = "image/x-icon"> 
+    <div class="topnav">
+      <a href="https://jfeldbrugge.github.io/">Home</a>
+      <a href="https://jfeldbrugge.github.io/Projects-and-Codes/">Projects and Code</a>
+    </div>
+---
 
 <!--- <a href="">Feldbrugge, and Turok (2020)</a> ---> 
 

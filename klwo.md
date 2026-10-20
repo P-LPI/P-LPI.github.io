@@ -1,6 +1,6 @@
 ---
 title: Kolmogorov lens in wave optics
-author: Job Feldbrugge and Neil Turok
+author: Job Leon Feldbrugge and Neil Turok
 header-includes:
   - |
     ```{=html}

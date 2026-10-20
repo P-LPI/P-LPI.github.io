@@ -1,6 +1,6 @@
 ---
 title: Picard-Lefschetz Path Integrals
-author: Job Feldbrugge, Ue-Li Pen and Neil Turok
+author: Job Leon Feldbrugge, Ue-Li Pen and Neil Turok
 header-includes:
   - |
     ```{=html}

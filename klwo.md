@@ -2,11 +2,18 @@
 title: Kolmogorov lens in wave optics
 author: Job Feldbrugge and Neil Turok
 header-includes:
-    <link rel = "icon" href = "figures/icon.png" type = "image/x-icon"> 
+  - |
+    ```{=html}
+    <link rel="icon" href="figures/icon.png" type="image/x-icon">
+    ```
+include-before:
+  - |
+    ```{=html}
     <div class="topnav">
       <a href="https://jfeldbrugge.github.io/">Home</a>
       <a href="https://jfeldbrugge.github.io/Projects-and-Codes/">Projects and Code</a>
     </div>
+    ```
 ---
 
 <!--- <a href="">Feldbrugge, and Turok (2020)</a> ---> 
